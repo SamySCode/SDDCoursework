@@ -1,14 +1,14 @@
+package ourfirstgui;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI1;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import ourfirstgui.GUI2;
 
 /**
  *
@@ -33,14 +34,6 @@ public class GUI implements ActionListener {
     private static JPasswordField passwordText;
     private static JButton loginButton;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        new GUI();
-    }
-
     public GUI() {
         frame = new JFrame();
 
@@ -52,7 +45,6 @@ public class GUI implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("GUI");
         frame.setSize(350, 200);
-        
 
         userLabel = new JLabel("User");
         userLabel.setBounds(10, 20, 80, 25);
@@ -75,11 +67,16 @@ public class GUI implements ActionListener {
         loginButton.addActionListener(this);
         panel.add(loginButton);
 
-        success = new JLabel("
+        success = new JLabel("");
         success.setBounds(10, 110, 300, 25);
         panel.add(success);
 
         frame.setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        // TODO code application logic here
+        new GUI();
     }
 
     @Override
@@ -91,7 +88,15 @@ public class GUI implements ActionListener {
 
         if (user.equals("User") && password.equals("12345")) {
             success.setText("Login Successful");
+            success.setForeground(Color.GREEN);
+            frame.dispose();
+            GUI2 GUI2;
+            GUI2 = new GUI2();
         }
+        else {
+            success.setForeground(Color.red);
+            success.setText("Please try again!");
+            }
 
     }
 
